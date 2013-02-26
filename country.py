@@ -274,6 +274,8 @@ countries = {
 }
 
 for line in sys.stdin:
-    for k,v in countries.iteritems():
-        line = re.sub(r'\b%s\b'%k, r'%s'%v.replace(' ', '_'), line.strip())
-    print line
+    l = line.strip().split("\t")
+    new_line = []
+    for x in l:
+        new_line.append(countries.get(x, x))
+    print "\t".join(new_line)
