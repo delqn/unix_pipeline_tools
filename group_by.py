@@ -27,7 +27,9 @@ for line in sys.stdin:
     for column in columns:
         grouped[k][column] = grouped[k].get(column, 0) + float(l[column])
 
-print title_row
+if options.title_row:
+    print title_row
+
 for k,columns in grouped.iteritems():
     summed_columns = "\t".join([str(x) for x in columns.values()])
     print "%s\t%s" % (k, summed_columns)
